@@ -8,8 +8,7 @@ fi
 # Update the system
 sudo rpm-ostree upgrade
 
-# Remove GNOME and install Openbox
-sudo rpm-ostree override remove gnome-shell
+# Install Openbox
 sudo rpm-ostree install openbox @^minimal-environment
 
 # Install Chromium
