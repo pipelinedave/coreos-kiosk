@@ -1,6 +1,6 @@
 ﻿#!/bin/bash
 
-if [ "$USER" != "Jenkins" ]; then
+if [ "$USER" != "core" ]; then
     echo "This script must be run as Jenkins user"
     exit 1
 fi
@@ -17,7 +17,7 @@ sudo rpm-ostree install chromium
 
 # Enable autologin for a user (replace YOUR_USER with your username)
 sudo mkdir -p /etc/systemd/system/getty@tty1.service.d/
-echo -e "[Service]\nExecStart=\nExecStart=-/usr/sbin/agetty --autologin Jenkins --noclear %I $TERM" | sudo tee /etc/systemd/system/getty@tty1.service.d/override.conf
+echo -e "[Service]\nExecStart=\nExecStart=-/usr/sbin/agetty --autologin core --noclear %I $TERM" | sudo tee /etc/systemd/system/getty@tty1.service.d/override.conf
 
 # Set Openbox to autostart Chromium in kiosk and incognito mode
 mkdir -p ~/.config/openbox

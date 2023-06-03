@@ -15,10 +15,10 @@
         stage('Customize and Build') {
             steps {
                 // Customize Fedora Silverblue
-                sh ' sudo -u Jenkins customize_fedora_silverblue.sh'
+                sh ' sudo -u core customize_fedora_silverblue.sh'
 
                 // Build the QCOW2 image
-                sh 'sudo -u Jenkins bash build_qcow2_image.sh'
+                sh 'sudo -u core bash build_qcow2_image.sh'
             }
         }
 
