@@ -1,2 +1,2 @@
 # coreos-kiosk
-build pipeline for a coreos (sericea spin) based Chromium kiosk
+build pipeline for a coreos (silverblue spin) based Chromium kiosk
