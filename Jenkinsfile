@@ -28,7 +28,7 @@
                 archiveArtifacts artifacts: 'output/image.qcow2', fingerprint: true
 
                 // Archive the Fedora Silverblue ISO as an artifact
-                archiveArtifacts artifacts: 'path/to/FedoraSilverblue.iso', fingerprint: true
+                archiveArtifacts artifacts: './Fedora-Silverblue-ostree-x86_64-38-1.6.iso', fingerprint: true
             }
         }
 
