@@ -1,24 +1,26 @@
 ﻿pipeline {
-    agent any
+    agent {
+        docker {
+            image 'jenkins/jenkins'
+            args '-u root'
+        }
+    }
 
     stages {
         stage('Prepare') {
             steps {
                 // Clone your Git repository
                 git branch: 'main', url: 'https://github.com/pipelinedave/coreos-kiosk.git'
-
-                // Optional: Switch to a specific branch or tag
-                // checkout('main')
             }
         }
 
         stage('Customize and Build') {
             steps {
                 // Customize Fedora Silverblue
-                sh ' sudo -u core customize_fedora_silverblue.sh'
+                sh 'su - core -c "bash customize_fedora_silverblue.sh"'
 
                 // Build the QCOW2 image
-                sh 'sudo -u core bash build_qcow2_image.sh'
+                sh 'su - core -c "bash build_qcow2_image.sh"'
             }
         }
 
