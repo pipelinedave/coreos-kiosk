@@ -1,0 +1,14 @@
+{
+  "builders": [{
+    "type": "qemu",
+    "iso_url": "https://download.fedoraproject.org/pub/fedora/linux/releases/34/Silverblue/x86_64/iso/Fedora-Silverblue-ostree-x86_64-34-1.2.iso",
+    "iso_checksum": "sha256:...",
+    "ssh_username": "core",
+    "ssh_password": "core",
+    "ssh_timeout": "30m"
+  }],
+  "provisioners": [{
+    "type": "ansible",
+    "playbook_file": "./playbook.yml"
+  }]
+}
