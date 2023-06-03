@@ -1,7 +1,7 @@
 ﻿#!/bin/bash
 
 # Set the username and password
-username=Jenkins
+username=core
 password=kiosk
 
 # Path to your Fedora Silverblue ISO
@@ -11,7 +11,9 @@ iso_path=./Fedora-Silverblue-ostree-x86_64-38-1.6.iso
 qemu-img create -f qcow2 fedora-silverblue.qcow2 20G
 
 # Create a virtual machine with Fedora Silverblue
-virt-install --name silverblue --ram 4096 --vcpus 4 --disk path=fedora-silverblue.qcow2,format=qcow2 --os-type linux --os-variant fedora34 --graphics none --location $iso_path --extra-args 'console=ttyS0,115200n8 serial inst.text inst.ks=https://raw.githubusercontent.com/pipelinedave/coreos-kiosk/master/ks.cfg'
+virt-install --name silverblue --ram 4096 --vcpus 4 --disk path=./fedora-silverblue.qcow2,format=qcow2 --os-variant fedora38 --graphics none --location /home/feddy/src/coreos-kiosk/Fedora-Silverblue-ostree-x86_64-38-1.6.iso --extra-args 'console=ttyS0,115200n8 serial inst.text inst.ks=https://raw.githubusercontent.com/pipelinedave/coreos-kiosk/master/ks.cfg'
+
+
 
 # Wait for the installation to finish
 echo "Waiting for the installation to finish..."

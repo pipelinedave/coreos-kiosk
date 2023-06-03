@@ -1,10 +1,5 @@
 ﻿pipeline {
-    agent {
-        docker {
-            image 'jenkins/jenkins'
-            args '-u root'
-        }
-    }
+    agent any
 
     stages {
         stage('Prepare') {
@@ -17,10 +12,10 @@
         stage('Customize and Build') {
             steps {
                 // Customize Fedora Silverblue
-                sh 'su - core -c "bash customize_fedora_silverblue.sh"'
+                sh 'sudo bash customize_fedora_silverblue.sh'
 
                 // Build the QCOW2 image
-                sh 'su - core -c "bash build_qcow2_image.sh"'
+                sh 'sudo bash build_qcow2_image.sh'
             }
         }
 

@@ -22,7 +22,8 @@ echo -e "[Service]\nExecStart=\nExecStart=-/usr/sbin/agetty --autologin core --n
 # Set Openbox to autostart Chromium in kiosk and incognito mode
 mkdir -p ~/.config/openbox
 # echo 'chromium-browser --kiosk --incognito &' > ~/.config/openbox/autostart
-echo 'chromium-browser  --incognito &' > ~/.config/openbox/autostart
+echo 'chromium-browser  --incognito --kiosk https://khm.de &' > ~/.config/openbox/autostart
 
 # Set Openbox as the default session
+touch ~/.xinitrc
 echo 'exec openbox-session' > ~/.xinitrc
