@@ -5,10 +5,10 @@
         stage('Prepare') {
             steps {
                 // Clone your Git repository
-                git 'https://github.com/pipelinedave/coreos-kiosk.git'
+                git branch: 'main', url: 'https://github.com/pipelinedave/coreos-kiosk.git'
 
                 // Optional: Switch to a specific branch or tag
-                checkout('main')
+                // checkout('main')
             }
         }
 
