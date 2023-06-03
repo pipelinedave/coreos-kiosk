@@ -1,11 +1,16 @@
 ﻿#!/bin/bash
 
+if [ "$USER" != "core" ]; then
+    echo "This script must be run as core user"
+    exit 1
+fi
+
 # Update the system
 sudo rpm-ostree upgrade
 
 # Remove GNOME and install Openbox
 sudo rpm-ostree override remove gnome-shell
-sudo rpm-ostree install openbox
+sudo rpm-ostree install openbox @^minimal-environment
 
 # Install Chromium
 sudo rpm-ostree install chromium
