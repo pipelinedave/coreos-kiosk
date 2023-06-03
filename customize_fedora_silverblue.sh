@@ -12,11 +12,12 @@ sudo rpm-ostree install chromium
 
 # Enable autologin for a user (replace YOUR_USER with your username)
 sudo mkdir -p /etc/systemd/system/getty@tty1.service.d/
-echo -e "[Service]\nExecStart=\nExecStart=-/usr/sbin/agetty --autologin YOUR_USER --noclear %I $TERM" | sudo tee /etc/systemd/system/getty@tty1.service.d/override.conf
+echo -e "[Service]\nExecStart=\nExecStart=-/usr/sbin/agetty --autologin core --noclear %I $TERM" | sudo tee /etc/systemd/system/getty@tty1.service.d/override.conf
 
 # Set Openbox to autostart Chromium in kiosk and incognito mode
 mkdir -p ~/.config/openbox
-echo 'chromium --kiosk --incognito &' > ~/.config/openbox/autostart
+# echo 'chromium-browser --kiosk --incognito &' > ~/.config/openbox/autostart
+echo 'chromium-browser  --incognito &' > ~/.config/openbox/autostart
 
 # Set Openbox as the default session
 echo 'exec openbox-session' > ~/.xinitrc
