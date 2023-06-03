@@ -1,0 +1,29 @@
+---
+- hosts: all
+  become: yes
+  tasks:
+    - name: Update the system
+      command: rpm-ostree upgrade
+
+    - name: Install Openbox
+      command: rpm-ostree install openbox
+
+    - name: Install Chromium
+      command: rpm-ostree install chromium
+
+    - name: Create Openbox autostart directory
+      file:
+        path: ~/.config/openbox
+        state: directory
+
+    - name: Create Openbox autostart file
+      copy:
+        dest: ~/.config/openbox/autostart
+        content: |
+          chromium-browser --incognito --kiosk &
+
+    - name: Create .xinitrc file
+      copy:
+        dest: ~/.xinitrc
+        content: |
+          exec openbox-session
