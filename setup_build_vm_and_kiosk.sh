@@ -1,7 +1,7 @@
 ﻿#!/bin/bash
 
 # Set the username and password
-username=core
+username=Jenkins
 password=kiosk
 
 # Path to your Fedora Silverblue ISO
@@ -25,7 +25,7 @@ virsh start silverblue
 
 # Wait for the VM to start
 echo "Waiting for the VM to start..."
-while ! ssh -o ConnectTimeout=1 core@$ip true; do
+while ! ssh -o ConnectTimeout=1 Jenkins@$ip true; do
     sleep 1
 done
 
